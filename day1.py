@@ -1,4 +1,5 @@
 import asyncio
+import time
 
 
 async def get_int(s):
@@ -57,9 +58,11 @@ async def find_2020_multiplier(inpt):
 
 
 def main():
+    start_time = time.time()
     with open('input_1.txt') as f:
         puzzle_input = f.read()
     asyncio.get_event_loop().run_until_complete(find_2020_multiplier(puzzle_input))
+    print(f"Duration: {time.time() - start_time}")
 
 
 if __name__ == '__main__':
