@@ -7,7 +7,7 @@ async def parse_int(s):
 
 
 async def parse_ints(lines):
-    tasks = [asyncio.ensure_future(parse_int(line)) for line in lines if line]
+    tasks = [asyncio.create_task(parse_int(line)) for line in lines if line]
     return await asyncio.gather(*tasks)
 
 
@@ -39,7 +39,7 @@ def main():
     with open('input_9.txt') as f:
         puzzle_input = f.read()
     lines = puzzle_input.split("\n")
-    part_1, part_2 = asyncio.get_event_loop().run_until_complete(find_bad_number(lines))
+    part_1, part_2 = asyncio.run(find_bad_number(lines))
     print(f"Part One: {part_1}")
     print(f"Part Two: {part_2}")
     print(f"Duration: {time.time() - start_time}")
