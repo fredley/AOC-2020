@@ -89,7 +89,6 @@ async def get_departure_score(rules, valid_tickets, your_ticket):
     return checksum
 
 
-
 def main():
     start_time = time.time()
     with open('input_16.txt') as f:

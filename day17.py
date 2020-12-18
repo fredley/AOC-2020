@@ -1,12 +1,13 @@
 from collections import defaultdict
 import time
 
+
 def parse_state(inpt):
     layer = defaultdict(dict)
     for y, row in enumerate(inpt.split("\n")):
         for x, char in enumerate(row):
             layer[x][y] = char
-    return {0: layer, 'generations': 0, 'min_x' : 0, 'max_x': x, 'min_y': 0, 'max_y': y}
+    return {0: layer, 'generations': 0, 'min_x': 0, 'max_x': x, 'min_y': 0, 'max_y': y}
 
 
 def count_hyper_world(world):
@@ -42,7 +43,7 @@ def step_world(world):
     generation = world['generations'] + 1
     new_world = {
         'generations': generation,
-        'min_x' : world['min_x'] - 1,
+        'min_x': world['min_x'] - 1,
         'max_x': world['max_x'] + 1,
         'min_y': world['min_y'] - 1,
         'max_y': world['max_y'] + 1
@@ -68,11 +69,10 @@ def compute_cell(world, z, x, y):
     return '#' if (currently_alive and alive in {2, 3}) or (not currently_alive and alive == 3) else '.'
 
 
-
 def run_hyper_world(world, n):
     hyper_world = {
         'generations': world['generations'],
-        'min_x' : world['min_x'],
+        'min_x': world['min_x'],
         'max_x': world['max_x'],
         'min_y': world['min_y'],
         'max_y': world['max_y'],
@@ -86,7 +86,7 @@ def run_hyper_world(world, n):
 def step_hyper_world(world):
     new_world = {
         'generations': world['generations'] + 1,
-        'min_x' : world['min_x'] - 1,
+        'min_x': world['min_x'] - 1,
         'max_x': world['max_x'] + 1,
         'min_y': world['min_y'] - 1,
         'max_y': world['max_y'] + 1
